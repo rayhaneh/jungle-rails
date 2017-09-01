@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @items.each do |item| %>
+      <% @order.line_items.each do |item| %>
         <tr>
           <td>
             <%= item.product.name %>
@@ -39,7 +39,7 @@
       <% end %>
       </tbody>
     </table>
-    <p>TOTAL: <%= humanized_money_with_symbol @items.sum(:total_price_cents) %></p>
+    <p>TOTAL: <%= humanized_money_with_symbol @order.line_items.sum(:total_price_cents) %></p>
     <p>Thanks for using Jungle and have a great day!</p>
   </body>
 </html>

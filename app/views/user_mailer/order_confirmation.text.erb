@@ -5,4 +5,13 @@ Hello <%= @user.name %>
 
 Your order has been recieved and being processed.
 
+<% @order.line_items.each do |item| %>
+
+  Product:      <%= item.product.name %>
+  Unit Price:   <%= item.item_price_cents %>
+  Quantity:     <%= item.quantity %>
+  Price:        <%= item.total_price_cents %>
+
+<% end %>
+
 Thanks for using Jungle and have a great day!
