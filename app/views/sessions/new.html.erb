@@ -1,9 +1,20 @@
-<h1>Login</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-4 col-lg-4">
+      <h1>Login</h1>
+      <%= form_tag '/login' do %>
 
-<%= form_tag '/login' do %>
+        <div class="form-group">
+          <label>Email:</label>
+          <%= text_field_tag :email, "", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <%= password_field_tag :password, "", class: "form-control" %>
+        </div>
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
+      <% end %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-
-<% end %>
+    </div>
+  </div>
+</div>
