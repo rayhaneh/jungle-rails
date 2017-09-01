@@ -1,7 +1,15 @@
+
 <div class="container">
   <div class="row">
     <div class="col-lg-offset-4 col-lg-4">
     <h1>SIGN UP</h1>
+    <% if notice %>
+      <div class="alert alert-danger">
+        <% notice.each do |n| %>
+          <p><%=n%></p>
+        <%end%>
+      </div>
+    <%end%>
     <%= form_for :user, url: '/users' do |f| %>
 
       <div class="form-group">
