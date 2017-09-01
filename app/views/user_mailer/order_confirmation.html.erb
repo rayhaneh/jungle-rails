@@ -11,6 +11,35 @@
     <p>
       Your order has been recieved and being processed.
     </p>
+   <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.product.name %>
+          </td>
+          <td>
+            <%= item.item_price_cents %>
+          </td>
+          <td>
+            <%= item.quantity %>
+          </td>
+          <td>
+            <%= item.total_price_cents %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <p>TOTAL: <%= humanized_money_with_symbol @items.sum(:total_price_cents) %></p>
     <p>Thanks for using Jungle and have a great day!</p>
   </body>
 </html>
