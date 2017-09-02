@@ -1,7 +1,7 @@
 
-Thank you for your order, <%= @user.name %>
+Thank you for your order.
 ===============================================
-Hello <%= @user.name %>
+Hello <%= (@user ? @user.name : '')%>,
 
 Your order has been recieved and being processed.
 
