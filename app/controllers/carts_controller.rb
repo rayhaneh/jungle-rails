@@ -1,8 +1,10 @@
 class CartsController < ApplicationController
 
+  # Show cart
   def show
   end
 
+  # Add items to cart
   def add_item
     product_id = params[:product_id].to_s
 
@@ -14,6 +16,7 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
+  # Remove items from cart
   def remove_item
     product_id = params[:product_id].to_s
 

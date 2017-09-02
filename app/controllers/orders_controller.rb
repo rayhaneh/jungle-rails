@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
 
+  # Show one specific order
   def show
     @order = Order.find(params[:id])
   end
 
+  # Create new order
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
@@ -20,10 +22,10 @@ class OrdersController < ApplicationController
     redirect_to cart_path, flash: { error: e.message }
   end
 
+
   private
 
   def empty_cart!
-    # empty hash means no products in cart :)
     update_cart({})
   end
 

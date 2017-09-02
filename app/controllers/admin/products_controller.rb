@@ -1,11 +1,11 @@
 class Admin::ProductsController < Admin::BaseController
 
-
-
+  # Show products for admin
   def index
     @products = Product.order(id: :desc).all
   end
 
+  # Create a new product by admin
   def new
     @product = Product.new
   end
@@ -20,14 +20,15 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
+  # Destroy a product by admin
   def destroy
     @product = Product.find params[:id]
     @product.destroy
     redirect_to [:admin, :products], notice: 'Product deleted!'
   end
 
-  private
 
+  private
 
   def product_params
     params.require(:product).permit(

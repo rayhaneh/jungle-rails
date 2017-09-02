@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   before_action :authorize
 
-
+  # Create a new product review
   def create
     @review = Review.new(review_params)
     @review.product_id = params[:product_id]
@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
 
   end
 
-
+  # Delete a product review
   def destroy
     @review = Review.find params[:id]
     @review.destroy
@@ -26,6 +26,8 @@ class ReviewsController < ApplicationController
     redirect_to product_path(@product), notice: 'Review deleted!'
   end
 
+
+  private
 
   def review_params
     params.require(:review).permit(

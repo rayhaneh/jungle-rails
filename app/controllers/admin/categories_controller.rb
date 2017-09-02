@@ -1,11 +1,11 @@
 class Admin::CategoriesController < Admin::BaseController
 
-
-
+  # Show categories to admin
   def index
     @categories = Category.order(id: :asc).all
   end
 
+  # Add a new category by admin
   def new
     @category = Category.new
   end
