@@ -1,33 +1,42 @@
 <article class="product">
+
+  <!-- Product Details -->
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
-    <% if product.reviews.average(:rating) %>
-      <p>Rating: <%= product.reviews.average(:rating)%>/5</p>
-    <% else %>
-      <p>Rating: 0/5</p>
-    <% end %>
+    <div>
+      <span class="reviews"><%= product.reviews.count%> Reviews</span>
+      <% if product.reviews.average(:rating) %>
+        <span class="overall-rating"><%= product.reviews.average(:rating).round(1)%> <i class="fa fa-star fa-lg" aria-hidden="true"></i></span>
+      <% end %>
+    </div>
   </header>
   <p class="description">
     <%= product.description %>
   </p>
+
+  <!-- Add and Details Buttons -->
   <footer class="actions">
-    <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
-      <%= fa_icon "shopping-cart", text: 'Add' %>
+    <% if product.quantity !=0 %>
+      <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
+        <%= fa_icon "shopping-cart", text: 'Add' %>
+      <% end %>
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;
     <% end %>
   </footer>
 
+  <!-- Sold Out Badge -->
   <% if product.quantity == 0 %>
     <aside class="badge">
       SOLD OUT!
     </aside>
   <%end%>
 
+  <!-- Price Badge -->
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
