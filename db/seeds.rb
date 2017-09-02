@@ -141,31 +141,139 @@ User.create!({
   password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
 })
 
+User.create!({
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+})
 
-prod1 = Product.find 1
+User.create!({
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+})
 
-prod1.reviews.create!({
+User.create!({
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+})
+
+User.create!({
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+})
+
+
+prod = Product.find 12
+
+prod.reviews.create!({
   user_id: 1,
   description: Faker::Lorem.sentence(3, true),
   rating: 4
 })
 
-prod1.reviews.create!({
-  user_id: 1,
+prod.reviews.create!({
+  user_id: 2,
   description: Faker::Lorem.sentence(3, true),
   rating: 3
 })
 
-prod1.reviews.create!({
-  user_id: 1,
+prod.reviews.create!({
+  user_id: 3,
   description: Faker::Lorem.sentence(3, true),
   rating: 5
 })
 
-prod1.reviews.create!({
+prod.reviews.create!({
+  user_id: 4,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 4
+})
+
+
+prod = Product.find 10
+prod.reviews.create!({
   user_id: 1,
   description: Faker::Lorem.sentence(3, true),
   rating: 4
 })
+prod.reviews.create!({
+  user_id: 2,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 5
+})
+prod.reviews.create!({
+  user_id: 3,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 5
+})
+prod.reviews.create!({
+  user_id: 4,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 3
+})
+prod.reviews.create!({
+  user_id: 5,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 1
+})
+
+
+prod = Product.find 9
+prod.reviews.create!({
+  user_id: 1,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 4
+})
+prod.reviews.create!({
+  user_id: 2,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 1
+})
+prod.reviews.create!({
+  user_id: 3,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 2
+})
+prod.reviews.create!({
+  user_id: 4,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 3
+})
+prod.reviews.create!({
+  user_id: 5,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 1
+})
+
+
+prod = Product.find 8
+prod.reviews.create!({
+  user_id: 1,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 4
+})
+prod.reviews.create!({
+  user_id: 3,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 5
+})
+
+prod = Product.find 3
+prod.reviews.create!({
+  user_id: 1,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 2
+})
+prod.reviews.create!({
+  user_id: 5,
+  description: Faker::Lorem.sentence(3, true),
+  rating: 1
+})
+
+
+
 
 puts "DONE!"
