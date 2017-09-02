@@ -1,13 +1,36 @@
 <section class="products-show">
-<p id="notice"><%= notice %></p>
+
+  <!-- Messages -->
+  <%if notice%>
+    <p class="alert alert-success"><%= notice %></p>
+  <%end%>
+
   <header class="page-header">
-    <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+    <!-- Title -->
+    <h1>
+      <%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %>
+    </h1>
+
+    <!-- Number of Reviews and Overall Rating -->
+    <a href="#review-form">
+      <h5 class="review-counter"><%= @product.reviews.count%> Reviews</h5>
+    </a>
+    <% if @product.reviews.average(:rating) %>
+      <p class="overall-rating">
+        <%= @product.reviews.average(:rating).round(1)%>/5.0
+        <% @product.reviews.average(:rating).to_i.times do%>
+          <%= fa_icon "star", class: 'fa-lg' %>
+        <% end %>
+        <% (5 - @product.reviews.average(:rating).to_i).times do%>
+          <%= fa_icon "star-o", class: 'fa-lg' %>
+        <% end %>
+      </p>
+    <% end %>
+
   </header>
 
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
@@ -22,31 +45,40 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt></dt>
+          <dd>
+
+          </dd>
         </dl>
       </div>
     </div>
+  </div>
 
+    <!-- Add A New Review -->
     <% if current_user %>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-1">
+      <div id="review-form" class="row">
+                <div class="col-sm-12">
+
+          <h3>Write a Customer Review</h3>
           <%= form_for [@product, @review] do |form| %>
 
             <div class="form-group">
               <%= form.label :description %>
-              <%= form.text_field :description, class: 'form-control' %>
+              <%= form.text_area :description, rows: '4', class: 'form-control' %>
             </div>
             <div class="form-group">
               <%= form.label :rating %>
               <%= form.select :rating, options_for_select([1,2,3,4,5]), class: 'form-control'%>
             </div>
-            <%= form.submit 'submit', class: 'btn btn-primary' %>
+            <%= form.submit 'Submit', class: 'btn btn-primary' %>
 
           <% end %>
         </div>
       </div>
     <%end %>
 
-    <div class="row">
+    <!-- Render Customer Reviews -->
+    <div id="product-reviews" class="row">
       <%= render @product.reviews.order('created_at DESC') %>
     </div>
 
