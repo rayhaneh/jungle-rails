@@ -1,16 +1,20 @@
-<article class="product">
-  <header>
-    <%= link_to line_item.product do %>
-      <%= image_tag line_item.product.image.thumb, alt: line_item.product.name %>
-      <h4><%= line_item.product.name %></h4>
-    <% end %>
-  </header>
-  <p class="description">
-    <%= line_item.product.description %>
-  </p>
-  <footer class="actions">
-    <p>Quantity: <%= line_item.product.quantity %></p>
-    <p>Price: <%= line_item.item_price_cents %></p>
-  </footer>
 
-</article>
+<tr>
+    <td>
+      <%= image_tag line_item.product.image.tiny %>
+    </td>
+    <td>
+      <h4><%= line_item.product.name %></h4>
+      <br>
+      <p><%= line_item.product.description %></p>
+    </td>
+    <td>
+      <%= humanized_money_with_symbol line_item.item_price_cents %>
+    </td>
+        <td>
+      <%= line_item.quantity %>
+    </td>
+    <td>
+      <%= humanized_money_with_symbol line_item.total_price_cents %>
+    </td>
+  </tr>
