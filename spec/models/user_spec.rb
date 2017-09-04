@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  context "Validations:" do
+  before :each do
+    @user_details = {
+        name:  'John',
+        email: 'JOHN.smith@gmail.com',
+        password: 'mypassword',
+        password_confirmation: 'mypassword'
+    }
+  end
 
-    before :each do
-      @user_details = {
-          name:  'John',
-          email: 'JOHN.smith@gmail.com',
-          password: 'mypassword',
-          password_confirmation: 'mypassword'
-      }
-    end
+  context "Validations:" do
 
     it "should save a valid user" do
       @user = User.create(@user_details)
@@ -71,6 +71,30 @@ RSpec.describe User, type: :model do
       @user2.save
       expect(@user2.errors.full_messages).to include "Email has already been taken"
    end
+
+  end
+
+  context '.authenticate_with_credentials' do
+
+    it "should authenticate with correct credentials" do
+      @user = User.new(@user_details)
+      @user.save
+      expect(User.authenticate_with_credentials(@user_details[:email], @user_details[:password])).to eq(@user)
+    end
+
+    it "should authenticate with emails that have extra spaces" do
+      @user = User.new(@user_details)
+      @user.save
+      @user_details[:email] = "   #{@user_details[:email]}   "
+      expect(User.authenticate_with_credentials(@user_details[:email], @user_details[:password])).to eq(@user)
+    end
+
+    it "should authenticate with wrong case for email" do
+      @user = User.new(@user_details)
+      @user.save
+      @user_details[:email] = @user_details[:email].upcase
+      expect(User.authenticate_with_credentials(@user_details[:email], @user_details[:password])).to eq(@user)
+    end
 
   end
 
