@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :reviews
 
-  validates :name, :email, :password, :password_confirmation, presence: true
+  validates :name, :email, :password, presence: true
   validates :email, uniqueness: { case_sensitive: false }
-  validates :password, length: {minimum: 8}
+  validates :password, length: {minimum: 4}
 
 
   def self.authenticate_with_credentials(email, password)
