@@ -24,35 +24,34 @@ RSpec.describe Product, type: :model do
       }
     end
 
-    it "Should assign correct product details" do
+    it "should save a valid product" do
       @product = @category.products.new(@product_details)
       expect(@product.valid?).to be true
     end
 
-    it "Should errorout with a nil name field" do
+    it "should errorout with a nil name field" do
       @product_details[:name] = nil
       @product = @category.products.new(@product_details)
       @product.save
       expect(@product.errors.full_messages).to include "Name can't be blank"
     end
 
-    it "Should errorout with a nil price field" do
+    it "should errorout with a nil price field" do
       @product_details[:price] = nil
       @product = @category.products.new(@product_details)
       @product.save
       expect(@product.errors.full_messages).to include "Price can't be blank"
     end
 
-    it "Should errorout with a nil quantity field" do
+    it "should errorout with a nil quantity field" do
       @product_details[:quantity] = nil
       @product = @category.products.new(@product_details)
       @product.save
       expect(@product.errors.full_messages).to include "Quantity can't be blank"
     end
 
-    it "Should errorout with a nil category field" do
-      @product_details[:category] = nil
-      @product = @category.products.new(@product_details)
+    it "should errorout with a nil category field" do
+      @product = Product.new(@product_details)
       @product.save
       expect(@product.errors.full_messages).to include "Category can't be blank"
     end
