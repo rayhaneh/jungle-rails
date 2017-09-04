@@ -138,31 +138,36 @@ cat3.products.create!({
 User.create!({
   name: Faker::Name.name,
   email: Faker::Internet.email,
-  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+  password: 'user1password',
+  password_confirmation: 'user1password'
 })
 
 User.create!({
   name: Faker::Name.name,
   email: Faker::Internet.email,
-  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+  password: 'user2password',
+  password_confirmation: 'user2password'
 })
 
 User.create!({
   name: Faker::Name.name,
   email: Faker::Internet.email,
-  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+  password: 'user3password',
+  password_confirmation: 'user3password'
 })
 
 User.create!({
   name: Faker::Name.name,
   email: Faker::Internet.email,
-  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+  password: 'user4password',
+  password_confirmation: 'user4password'
 })
 
 User.create!({
   name: Faker::Name.name,
   email: Faker::Internet.email,
-  password_digest: '$2a$10$X/X2A6J47SXf1ZUiiDVzb.i3zRWdVvs1EwxNk54baD/Nvu0xrgKdy'
+  password: 'user5password',
+  password_confirmation: 'user5password'
 })
 
 
