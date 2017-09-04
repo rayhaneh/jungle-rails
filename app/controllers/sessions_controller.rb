@@ -12,16 +12,6 @@ class SessionsController < ApplicationController
       end
     end
 
-    # If the user exists AND the password entered is correct.
-    # if user && user.authenticate(params[:password])
-    #   # Save the user id inside the browser cookie.
-    #   session[:user_id] = user.id
-    #   redirect_to '/'
-    # else
-    # # If user's login doesn't work, send them back to the login form.
-    #   redirect_to '/login', notice: "Invalid username or password"
-    # end
-
   end
 
   # Destroy Session Cookie (Logout)
