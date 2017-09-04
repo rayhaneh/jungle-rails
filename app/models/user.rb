@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
-  validates :name, :email, presence: true
-  validates :email, uniqueness: true
   has_secure_password
+  has_many :reviews
 
+  validates :name, :email, :password, :password_confirmation, presence: true
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :password, length: {minimum: 8}
 end
